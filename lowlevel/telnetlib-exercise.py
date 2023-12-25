@@ -5,8 +5,9 @@ import telnetlib
 import time
 
 HOST = "172.31.129.3"
-user = input("Enter your remote account: ")
-password = getpass.getpass()
+# user = input("Enter your remote account: ")
+# password = getpass.getpass()
+password = "cisco"
 
 tn = telnetlib.Telnet(HOST, 23, 5)
 
@@ -47,12 +48,16 @@ time.sleep(2)
 output = tn.read_very_eager()
 output = output.decode("ascii")
 output = output.split()
-for intf in ["Gi0/1", "Gi0/2"]:
+expected_ip = {"Gi0/1": "192.168.1.1", "Gi0/2": "192.168.2.1"}
+for intf in expected_ip.keys():
     try:
         found_intf = output.index(intf)
         found_ip = output[found_intf + 1]
-        print(f"{found_ip} of {intf} is assigned to VRF control-data")
+        if found_ip == expected_ip[intf]:
+            print(f"{found_ip} of {intf} is assigned to VRF control-data")
+        else:
+            print("Wrong IP.")
     except Exception as e:
-        print("Error")
+        print(e)
 
 tn.close()
