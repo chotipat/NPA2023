@@ -12,7 +12,15 @@ def test(dip, result):
             and line[0] == "O"
             and line[1] == "192.168.3.0/24"
         ):
-            print("test routing R1 passes")
+            print("test routing R1 passes: 192.168.3.0/24 found on R1")
+            success = True
+        if (
+            len(line) >= 2
+            and dip == "172.31.129.3"
+            and line[0] == "O*E2"
+            and line[1] == "0.0.0.0/0"
+        ):
+            print("test routing R1 passes: default route found on R1")
             success = True
         if (
             len(line) >= 2
@@ -20,7 +28,7 @@ def test(dip, result):
             and line[0] == "O"
             and line[1] == "192.168.1.0/24"
         ):
-            print("test routing R2 passes")
+            print("test routing R2 passes: 192.168.1.0/24 found on R2")
             success = True
     return success
 
