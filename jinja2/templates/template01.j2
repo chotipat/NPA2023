@@ -1,0 +1,10 @@
+{# This is a comment line and strip out all whitespaces after the block. Notice the hyphen --> -#}
+hostname {{ hostname }}
+{# This is a comment #}
+no ip domain lookup
+ip domain name local.lab
+ip name-server {{ name_server_pri }}
+ip name-server {{ name_server_sec }}
+
+ntp server {{ ntp_server_pri }} prefer
+ntp server {{ ntp_server_sec }}

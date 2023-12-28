@@ -1,0 +1,16 @@
+<rpc message-id="106" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<edit-config>
+<target>
+<running>
+</running>
+</target>
+<config>
+ <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
+    <interface operation="delete">
+        <name>Loopback1</name>
+    </interface>
+ </interfaces>
+</config>
+</edit-config>
+</rpc>
+]]>]]>
