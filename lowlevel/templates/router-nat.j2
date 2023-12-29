@@ -1,0 +1,10 @@
+{% for net in allowed %}
+access-list 1 permit {{ net.network }} {{ net.wc_mask }}
+{% endfor %}
+ip nat inside source list 1 interface {{ outside_interface }} vrf {{ vrf }} overload
+{% for interface in inside_interfaces %}
+interface {{ interface }}
+ ip nat inside
+{% endfor %}
+interface {{ outside_interface }}
+ ip nat outside

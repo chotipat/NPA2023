@@ -1,0 +1,10 @@
+access-list 1 permit 192.168.1.0 0.0.0.255
+access-list 1 permit 192.168.2.0 0.0.0.255
+access-list 1 permit 192.168.3.0 0.0.0.255
+ip nat inside source list 1 interface g0/3 vrf control-data overload
+interface g0/1
+ ip nat inside
+interface g0/2
+ ip nat inside
+interface g0/3
+ ip nat outside

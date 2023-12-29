@@ -1,0 +1,15 @@
+---
+name: R2-29
+management_ip: "172.31.129.4"
+vrf: control-data
+allowed:
+  - network: 192.168.1.0
+    wc_mask: 0.0.0.255
+  - network: 192.168.2.0
+    wc_mask: 0.0.0.255
+  - network: 192.168.3.0
+    wc_mask: 0.0.0.255
+inside_interfaces:
+  - g0/1
+  - g0/2
+outside_interface: g0/3

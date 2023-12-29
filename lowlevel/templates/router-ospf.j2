@@ -1,0 +1,7 @@
+router ospf {{ ospf_id }} vrf {{ vrf }}
+ {% for net in networks %}
+ network {{ net.network }} {{ net.wc_mask }} area {{ area }}
+ {% endfor %}
+ {% if border == True %}
+ default-information originate
+ {% endif %}

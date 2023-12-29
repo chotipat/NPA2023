@@ -1,0 +1,4 @@
+router ospf 1 vrf control-data
+ network 192.168.2.0 0.0.0.255 area 
+ network 192.168.3.0 0.0.0.255 area 
+ default-information originate
