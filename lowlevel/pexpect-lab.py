@@ -18,6 +18,7 @@ child.sendline(COMMAND)
 child.expect(PROMPT)
 result = child.before
 print(result)
+print(type(result))
 print()
 print(result.decode("UTF-8"))
 child.sendline("exit")
