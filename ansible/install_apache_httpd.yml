@@ -1,0 +1,34 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Update repository index (ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    
+    - name: Install apache package
+      apt:
+        name: apache2
+      when: ansible_distribution == "Ubuntu"
+
+    - name: add php support for apache
+      apt:
+        name: libapache2-mod-php 
+      when: ansible_distribution == "Ubuntu"
+    
+    - name: Update repository index (centOS)
+      dnf:
+        update_cache: yes   
+      when: ansible_distribution == "CentOS"
+    
+    - name: Install httpd package
+      dnf:
+        name: httpd
+      when: ansible_distribution == "CentOS"
+    
+    - name: add php support for httpd
+      dnf:
+        name: php
+      when: ansible_distribution == "CentOS"
+         
