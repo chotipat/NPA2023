@@ -1,12 +1,13 @@
 import pytest
 from fizzbuzz import fizzbuzz
 
-# @pytest.fixture
-# def test_input():
-#    return list(range(1, 6))
+
+@pytest.fixture
+def test_input():
+    return list(range(1, 6))
 
 
-def test_fizzbuzz(test_input=list(range(1, 6))):
+def test_fizzbuzz(test_input):
     assert 1 == fizzbuzz(test_input[0])
     assert 2 == fizzbuzz(test_input[1])
     assert "Fizz" == fizzbuzz(test_input[2])
