@@ -28,4 +28,4 @@ def test_others(test_input):
 
 
 if __name__ == "__main__":
-    test_fizzbuzz(int(input()))
+    print("Please run with pytest")

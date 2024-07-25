@@ -13,4 +13,4 @@ def test_fizzbuzz(test_data):
 
 
 if __name__ == "__main__":
-    test_fizzbuzz(int(input()))
+    print("Please run with pytest")
