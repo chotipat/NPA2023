@@ -15,6 +15,6 @@ def test_fizzbuzz(num):
     print("All tests are passed.")
 
 if __name__ == '__main__':
-    test_fizzbuzz()
+    test_fizzbuzz(int(input())
 
 
