@@ -1,18 +1,30 @@
 import pytest
 from fizzbuzz import fizzbuzz
 
-@pytest.mark.parametrize("num", range(1, 16))
-def test_fizzbuzz(num):
-    result = fizzbuzz(num)
-    if num in [3, 6, 9, 12]:
-        assert 'Fizz' == result
-    elif num in [5, 10]:
-        assert 'Buzz' == result
-    elif num in [15]:
-        assert 'FizzBuzz' == result
-    else:
-        assert num == result
-    print("All tests are passed.")
 
-if __name__ == '__main__':
-    test_fizzbuzz(int(input()))
+@pytest.mark.parametrize(
+    "input, output",
+    [
+        (1, 1),
+        (2, 2),
+        (3, "Fizz"),
+        (4, 4),
+        (5, "Buzz"),
+        (6, "Fizz"),
+        (7, 7),
+        (8, 8),
+        (9, "Fizz"),
+        (10, "Buzz"),
+        (11, 11),
+        (12, "Fizz"),
+        (13, 13),
+        (14, 14),
+        (15, "FizzBuzz"),
+    ],
+)
+def test_fizzbuzz(input, output):
+    assert output == fizzbuzz(input)
+
+
+if __name__ == "__main__":
+    print("Please run with pytest")

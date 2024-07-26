@@ -1,6 +1,8 @@
 import pytest
 
-@pytest.fixture
-def test_input():
-    return list(range(1, 6))
 
+@pytest.fixture
+def setup_teardown():
+    print("\nSetup testing")
+    yield
+    print("\nClean testing")
