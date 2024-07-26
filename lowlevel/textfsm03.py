@@ -21,14 +21,10 @@ intf_selected = sys.argv[1]
 match = re.search("([a-z]+)\s*(\d/\d|\d)", intf_selected, re.IGNORECASE)
 if match:
     intf_selected_name = match.group(1)
-else:
-    print("Wrong interface name!")
-    sys.exit(1)
-if match:
     intf_selected_num = match.group(2)
 else:
-    print("Wrong inteface number!")
-    sys.exti(1)
+    print("Wrong interface name format!")
+    sys.exit(1)
 
 found = False
 with ConnectHandler(**device_params) as ssh:
