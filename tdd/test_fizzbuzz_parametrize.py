@@ -3,7 +3,7 @@ from fizzbuzz import fizzbuzz
 
 
 @pytest.mark.parametrize(
-    "input, output",
+    "input_data, output_data",
     [
         (1, 1),
         (2, 2),
@@ -22,8 +22,8 @@ from fizzbuzz import fizzbuzz
         (15, "FizzBuzz"),
     ],
 )
-def test_fizzbuzz(input, output):
-    assert output == fizzbuzz(input)
+def test_fizzbuzz(input_data, output_data):
+    assert output_data == fizzbuzz(input_data)
 
 
 if __name__ == "__main__":
