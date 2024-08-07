@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Remove apache2 and libapache2-mod-php
+      apt:
+        name: 
+          - apache2
+          - libapache2-mod-php
+        state: absent
+        update_cache: yes
