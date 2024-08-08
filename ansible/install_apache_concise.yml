@@ -2,10 +2,21 @@
 - hosts: all
   become: true
   tasks:
-    - name: Install apache and libapache2-mod-php packages
+    - name: Update repository index, install apache2 and libapache2-mod-php (ubuntu)
       apt:
-        name: 
+        name:
           - apache2
-          - libapache2-mod-php 
+          - libapache2-mod-php
         state: latest
         update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    
+    - name: Update repository index, install httpd and php (centOS)
+      dnf:
+        name:
+          - httpd
+          - php
+        state: latest
+        update_cache: yes   
+      when: ansible_distribution == "CentOS"
+ 
