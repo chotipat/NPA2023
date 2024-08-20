@@ -1,0 +1,9 @@
+[web_servers]
+172.31.128.10 
+172.31.128.20 ansible_user=cloud-user 
+
+[database_servers]
+172.31.128.11 
+
+[file_servers]
+172.31.128.12 

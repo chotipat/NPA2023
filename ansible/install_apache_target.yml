@@ -1,0 +1,26 @@
+---
+- hosts: ubuntu_servers
+  become: true
+  tasks:
+    - name: Update repository index, install apache2 and libapache2-mod-php (ubuntu)
+      apt:
+        name:
+          - apache2
+          - libapache2-mod-php
+        state: latest
+        update_cache: yes
+
+- hosts: centos_servers
+  become: true
+  tasks:    
+    - name: Update repository index, install httpd and php (centOS)
+      dnf:
+        name:
+          - httpd
+          - php
+        state: latest
+    - name: Start and enable http service
+      service:
+        name: httpd
+        state: started
+        enabled: yes

@@ -1,0 +1,71 @@
+---
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: update repository index and upgrade all installed dependencies (ubuntu)
+      apt:
+        # upgrade: dist
+        update_cache: true
+      when: ansible_distribution == "Ubuntu"
+
+    - name: update repository index and upgrade all installed dependencies (centos)
+      dnf:
+        # update_only: true
+        update_cache: true
+      when: ansible_distribution == "CentOS"
+
+- hosts: web_servers
+  become: true
+  tasks:
+    - name: Update repository index, install apache2 and libapache2-mod-php (ubuntu)
+      apt:
+        name:
+          - apache2
+          - libapache2-mod-php
+        state: latest
+      when: ansible_distribution == "Ubuntu"
+    
+    - name: Update repository index, install httpd and php (centOS)
+      dnf:
+        name:
+          - httpd
+          - php
+        state: latest 
+      when: ansible_distribution == "CentOS"
+
+    - name: Start and enable http service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+- hosts: database_servers
+  become: true
+  tasks:
+    - name: install mariadb-server (ubuntu)
+      apt:
+        name: mariadb-server
+        state: latest
+      when: ansible_distribution == "Ubuntu"
+
+    - name: install mariadb (centos)
+      dnf:
+         name: mariadb
+         state: latest
+      when: ansible_distribution == "CentOS"
+    
+    - name: Start and enable mariadb service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+      when: ansible_distribution == "CentOS"
+
+- hosts: file_servers
+  become: true
+  tasks:
+    - name: install file (samba) servers
+      package:
+        name: samba
+        state: latest
